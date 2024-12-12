@@ -131,7 +131,7 @@ require('yargs/yargs')(process.argv.slice(2))
   .command({
     command: 'configure <key> [value]',
     aliases: ['config', 'cfg'],
-    desc: 'Set a config variable',
+    describe: 'Set a config variable',
     builder: (yargs) => yargs.default('value', 'true'),
     handler: (argv) => {
       console.log(`setting ${argv.key} to ${argv.value}`)
@@ -318,7 +318,7 @@ cmds/init.js:
 
 ```js
 exports.command = 'init [dir]'
-exports.desc = 'Create an empty repo'
+exports.describe = 'Create an empty repo'
 exports.builder = {
   dir: {
     default: '.'
@@ -333,7 +333,7 @@ cmds/remote.js:
 
 ```js
 exports.command = 'remote <command>'
-exports.desc = 'Manage set of tracked repos'
+exports.describe = 'Manage set of tracked repos'
 exports.builder = function (yargs) {
   return yargs.commandDir('remote_cmds')
 }
@@ -344,7 +344,7 @@ cmds/remote_cmds/add.js:
 
 ```js
 exports.command = 'add <name> <url>'
-exports.desc = 'Add remote named <name> for repo at url <url>'
+exports.describe = 'Add remote named <name> for repo at url <url>'
 exports.builder = {}
 exports.handler = function (argv) {
   console.log('adding remote %s at url %s', argv.name, argv.url)
@@ -355,7 +355,7 @@ cmds/remote_cmds/prune.js:
 
 ```js
 exports.command = 'prune <name> [names..]'
-exports.desc = 'Delete tracked branches gone stale for remotes'
+exports.describe = 'Delete tracked branches gone stale for remotes'
 exports.builder = {}
 exports.handler = function (argv) {
   console.log('pruning remotes %s', [].concat(argv.name).concat(argv.names).join(', '))
